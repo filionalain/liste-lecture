@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { MongoClient, ObjectID } from 'mongodb';
 
 const app = express();
