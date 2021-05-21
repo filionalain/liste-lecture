@@ -7,22 +7,20 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
-function FormulairePiece() {
+function FormulaireAjouterPiece({ id }) {
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
     const [categorie, setCategorie] = useState('');
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
-        // TODO : adapter au back end
-        // const resultat = await fetch(`/api/articles/${nomArticle}/ajouter-commentaire`, {
-        //     method: 'post',
-        //     body: JSON.stringify({ nomUtilisateur, texte: texteCommentaire }),
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // });
-        // const body = await resultat.json();
+        await fetch(`/api/pieces/ajouter`, {
+            method: 'put',
+            body: JSON.stringify({ titre, artiste, categorie }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         setRediriger(true);
     };
 
@@ -62,4 +60,4 @@ function FormulairePiece() {
     );
 }
 
-export default FormulairePiece;
+export default FormulaireAjouterPiece;

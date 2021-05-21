@@ -10,7 +10,6 @@ import BarreNavigation from './composants/BarreNavigation';
 import PageAccueil from './pages/PageAccueil';
 import PageAdmin from './pages/PageAdmin';
 import PageAjouter from './pages/PageAjouter';
-import PageCategories from './pages/PageCategories';
 import PageModifier from './pages/PageModifier';
 import PageRepertoire from './pages/PageRepertoire';
 import PageSupprimer from './pages/PageSupprimer';
@@ -26,7 +25,6 @@ function App() {
           <Route path="/repertoire" component={PageRepertoire} />
           <Route path="/admin" component={PageAdmin} />
           <Route path="/ajouter" component={PageAjouter} />
-          <Route path="/categories" component={PageCategories} />
           <Route path="/modifier/:id" component={PageModifier} />
           <Route path="/supprimer/:id" component={PageSupprimer} />
           <Route component={Page404} />

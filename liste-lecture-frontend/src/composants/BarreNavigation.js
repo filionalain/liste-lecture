@@ -17,13 +17,7 @@ function BarreNavigation() {
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Link>Admin</Nav.Link>
-                    </LinkContainer>           
-                    <LinkContainer to="/modifier/3">
-                        <Nav.Link>Modifier</Nav.Link>
-                    </LinkContainer> 
-                    <LinkContainer to="/supprimer/3">
-                        <Nav.Link>Supprimer</Nav.Link>
-                    </LinkContainer>   
+                    </LinkContainer>            
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
