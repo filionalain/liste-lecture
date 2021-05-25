@@ -4,7 +4,7 @@ import {
     useEffect
 } from 'react';
 
-import ListePiecesAdmin from '../composants/ListePiecesAdmin';
+import ListePieces from '../composants/ListePieces';
 
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -30,7 +30,7 @@ function PageAdmin() {
             </Link>
             
             <h2>Liste du répertoire</h2>
-            <ListePiecesAdmin pieces={listePieces} />
+            <ListePieces pieces={listePieces} estAdmin={true} />
         </>
     );
 }
