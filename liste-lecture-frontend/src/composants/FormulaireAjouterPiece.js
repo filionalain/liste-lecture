@@ -52,7 +52,7 @@ function FormulaireAjouterPiece({ id }) {
                     onChange={(event) => setCategorie(event.target.value)} />
             </Form.Group>
 
-            <Button variant="primary" onClick={envoyerFormulaire} >
+            <Button className="mt-2" variant="primary" onClick={envoyerFormulaire} >
                 Ajouter
             </Button>
         </Form>

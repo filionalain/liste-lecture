@@ -35,7 +35,7 @@ function PageSupprimer({ match }) {
             Êtes-vous certain de vouloir supprimer cette pièce?
         </Alert>
 
-        <Button variant={'primary'} className={'mr-1'} onClick={confirmerSuppression} >Supprimer</Button>
+        <Button variant={'primary'} className={'me-2'} onClick={confirmerSuppression} >Supprimer</Button>
 
         <Link to="/admin">
             <Button variant={'danger'} >Annuler</Button>  
