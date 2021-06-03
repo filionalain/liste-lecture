@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon --exec npx babel-node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,9 @@
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
-    "nodemon": "^2.0.7"
+    "@shelf/jest-mongodb": "^1.2.5",
+    "jest": "^27.0.3",
+    "nodemon": "^2.0.7",
+    "regenerator-runtime": "^0.13.7"
   }
 }

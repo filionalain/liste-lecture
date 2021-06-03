@@ -1,32 +1,14 @@
 import express from 'express';
-import { MongoClient, ObjectID } from 'mongodb';
+import { ObjectID } from 'mongodb';
+import { utiliserDB } from './bd/connection';
+import { getPieces } from './bd/getPieces';
+import { ajouterPiece } from './bd/ajouterPiece';
 
 const app = express();
 
 app.use(express.json());
 
-const utiliserDB = async (operations, reponse) => {
-    try {
-        const client = await MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true});
-        const db = client.db('liste-repertoire');
-
-        await operations(db);
-
-        client.close();
-    }
-    catch(erreur) {
-        reponse.status(500).send("Erreur de connexion à la bd", erreur);
-    }
-};
-
-app.get('/api/pieces', (requete, reponse) => {
-    utiliserDB(async (db) => {
-        const listePieces = await db.collection('pieces').find().toArray();
-        reponse.status(200).json(listePieces);
-    }, reponse).catch(
-        () => reponse.status(500).send("Erreur lors de la requête")
-    );;
-});
+app.get('/api/pieces', getPieces);
 
 app.get('/api/pieces/:id', (requete, reponse) => {
     const id = requete.params.id;
@@ -40,29 +22,7 @@ app.get('/api/pieces/:id', (requete, reponse) => {
     );
 });
 
-app.put('/api/pieces/ajouter', (requete, reponse) => {
-    const {titre, artiste, categorie} = requete.body;
-
-    if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
-        utiliserDB(async (db) => {
-            await db.collection('pieces').insertOne({ 
-                titre: titre,
-                artiste: artiste,
-                categorie: categorie
-            });
-            
-            reponse.status(200).send("Pièce ajoutée");
-        }, reponse).catch(
-            () => reponse.status(500).send("Erreur : la pièce n'a pas été ajoutée")
-        );        
-    }
-    else {
-        reponse.status(500).send(`Certains paramètres ne sont pas définis :
-            - titre: ${titre}
-            - artiste: ${artiste}
-            - categorie: ${categorie}`);
-    }
-});
+app.put('/api/pieces/ajouter', ajouterPiece);
 
 app.post('/api/pieces/modifier/:id', (requete, reponse) => {
     const {titre, artiste, categorie} = requete.body;
