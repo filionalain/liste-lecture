@@ -11,6 +11,11 @@ function FormulaireAjouterPiece({ id }) {
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
     const [categorie, setCategorie] = useState('');
+
+    const [titreEstPresent, setTitreEstPresent] = useState(true);
+    const [artisteEstPresent, setArtisteEstPresent] = useState(true);
+    const [categorieEstPresent, setCategorieEstPresent] = useState(true);
+
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
@@ -24,6 +29,16 @@ function FormulaireAjouterPiece({ id }) {
         setRediriger(true);
     };
 
+    function validerFormulaire() {
+        setTitreEstPresent(titre !== "");
+        setArtisteEstPresent(artiste !== "");
+        setCategorieEstPresent(categorie !== "");
+
+        if ((titre !== "") && (artiste !== "") && (categorie !== "")) {
+            envoyerFormulaire();
+        }
+    }
+
     function AfficherRedirection() {
         if (rediriger === true) {
             return <Redirect to="/admin" />
@@ -35,24 +50,38 @@ function FormulaireAjouterPiece({ id }) {
         {AfficherRedirection()}
         <Form className="mb-1">
             <Form.Group>
-                <Form.Label>Titre</Form.Label>
-                <Form.Control type="text" value={titre} 
+                <Form.Label htmlFor="inputTitre">Titre 
+                    {titreEstPresent === false ? 
+                        <span className="text-danger"> * Vous devez entrer un titre.</span>
+                        : undefined
+                    }</Form.Label>
+                <Form.Control type="text" value={titre} id="inputTitre"
                     onChange={(event) => setTitre(event.target.value)} />
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Artiste / Groupe</Form.Label>
-                <Form.Control type="text" value={artiste} 
+                <Form.Label htmlFor="inputArtiste">Artiste / Groupe
+                    {artisteEstPresent === false ? 
+                        <span className="text-danger"> * Vous devez entrer un nom d'artiste.</span>
+                        : undefined
+                    }
+                </Form.Label>
+                <Form.Control type="text" value={artiste} id="inputArtiste"
                     onChange={(event) => setArtiste(event.target.value)} />
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Catégorie</Form.Label>
-                <Form.Control type="text" value={categorie} 
+                <Form.Label htmlFor="inputCategorie">Catégorie
+                    {categorieEstPresent === false ? 
+                        <span className="text-danger"> * Vous devez entrer une catégorie.</span>
+                        : undefined
+                    }
+                </Form.Label>
+                <Form.Control type="text" value={categorie} id="inputCategorie"
                     onChange={(event) => setCategorie(event.target.value)} />
             </Form.Group>
 
-            <Button className="mt-2" variant="primary" onClick={envoyerFormulaire} >
+            <Button className="mt-2" variant="primary" onClick={validerFormulaire} >
                 Ajouter
             </Button>
         </Form>
