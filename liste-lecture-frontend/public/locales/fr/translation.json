@@ -1,0 +1,11 @@
+{
+    "annuler": "Annuler",
+    "ajouter": "Ajouter",
+    "titre": "Titre",
+    "artisteGroupe": "Artiste / Groupe",
+    "categorie": "Catégorie",
+    "titreObligatoire": "Vous devez entrer un titre.",
+    "artisteObligatoire": "Vous devez entrer un nom d'artiste.",
+    "categorieObligatoire": "Vous devez entrer une catégorie.",
+    "ajouterNouvelle": "Ajouter une nouvelle pièce"
+  }

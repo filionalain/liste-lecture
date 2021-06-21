@@ -1,0 +1,11 @@
+{
+    "annuler": "Cancel",
+    "ajouter": "Add",
+    "titre": "Title",
+    "artisteGroupe": "Artist / Group",
+    "categorie": "Category",
+    "titreObligatoire": "You must enter a title.",
+    "artisteObligatoire": "You must enter an artist name.",
+    "categorieObligatoire": "You must enter a category.",
+    "ajouterNouvelle": "Add a new song"
+  }

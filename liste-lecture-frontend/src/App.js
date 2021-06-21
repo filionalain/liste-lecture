@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import BarreNavigation from './composants/BarreNavigation';
+import Langages from './composants/Langages';
 import PageAccueil from './pages/PageAccueil';
 import PageAdmin from './pages/PageAdmin';
 import PageAjouter from './pages/PageAjouter';
@@ -19,6 +20,7 @@ function App() {
   return (
     <Router>
       <Container>
+        <Langages />
         <BarreNavigation />
         <Switch>
           <Route path="/" component={PageAccueil} exact />

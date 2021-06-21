@@ -6,8 +6,11 @@ import {
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-function FormulaireAjouterPiece({ id }) {
+function FormulaireAjouterPiece() {
+    const { t } = useTranslation();
+
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
     const [categorie, setCategorie] = useState('');
@@ -50,9 +53,9 @@ function FormulaireAjouterPiece({ id }) {
         {AfficherRedirection()}
         <Form className="mb-1">
             <Form.Group>
-                <Form.Label htmlFor="inputTitre">Titre 
+                <Form.Label htmlFor="inputTitre">{t('titre')} 
                     {titreEstPresent === false ? 
-                        <span className="text-danger"> * Vous devez entrer un titre.</span>
+                        <span className="text-danger"> * {t('titreObligatoire')}</span>
                         : undefined
                     }</Form.Label>
                 <Form.Control type="text" value={titre} id="inputTitre"
@@ -60,9 +63,9 @@ function FormulaireAjouterPiece({ id }) {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label htmlFor="inputArtiste">Artiste / Groupe
+                <Form.Label htmlFor="inputArtiste">{t('artisteGroupe')}
                     {artisteEstPresent === false ? 
-                        <span className="text-danger"> * Vous devez entrer un nom d'artiste.</span>
+                        <span className="text-danger"> * {t('artisteObligatoire')}</span>
                         : undefined
                     }
                 </Form.Label>
@@ -71,9 +74,9 @@ function FormulaireAjouterPiece({ id }) {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label htmlFor="inputCategorie">Catégorie
+                <Form.Label htmlFor="inputCategorie">{t('categorie')}
                     {categorieEstPresent === false ? 
-                        <span className="text-danger"> * Vous devez entrer une catégorie.</span>
+                        <span className="text-danger"> * {t('categorieObligatoire')}</span>
                         : undefined
                     }
                 </Form.Label>
@@ -82,7 +85,7 @@ function FormulaireAjouterPiece({ id }) {
             </Form.Group>
 
             <Button className="mt-2" variant="primary" onClick={validerFormulaire} >
-                Ajouter
+                {t('ajouter')}
             </Button>
         </Form>
     </>
