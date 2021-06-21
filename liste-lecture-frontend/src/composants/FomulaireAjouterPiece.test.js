@@ -22,7 +22,7 @@ test("Ne devrait pas afficher des messages d'erreur", () => {
     const { getByText, getByLabelText } = render(<FormulaireAjouterPiece />);
     
     const inputTitre = getByLabelText(/Titre/);
-    fireEvent.change(inputTitre, { target: { value: 'abc' }});
+    fireEvent.change(inputTitre, { target: { value: ' ' }});
 
     const inputArtiste = getByLabelText(/Artiste/);
     fireEvent.change(inputArtiste, { target: { value: 'abc' }});
