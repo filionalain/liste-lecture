@@ -1,11 +1,14 @@
 import express from 'express';
 import { ObjectID } from 'mongodb';
+import path from 'path';
+
 import { utiliserDB } from './bd/connection';
 import { getPieces } from './bd/getPieces';
 import { ajouterPiece } from './bd/ajouterPiece';
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, '/build')));
 app.use(express.json());
 
 app.get('/api/pieces', getPieces);
@@ -63,6 +66,10 @@ app.delete('/api/pieces/supprimer/:id', (requete, reponse) => {
     }, reponse).catch(
         () => reponse.status(500).send("Erreur : la pièce n'a pas été supprimée")
     );    
+});
+
+app.get('*', (requete, reponse) => {
+    reponse.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 app.listen(8000, () => console.log("Serveur démarré sur le port 8000"));
